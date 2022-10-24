@@ -1,0 +1,26 @@
+html(lang='en')
+  head
+    title Members Only
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='/stylesheets/style.css')
+
+  body
+    header 
+      nav.navbar 
+        a(href='/') Home 
+        .navlinks 
+          if (!user)
+            a(href='/login') Log in 
+            a(href='/signup') Sign up
+          else
+            a(href='/create-message') Create Message
+            if (!user.isMember)
+              a(href='/member') Member
+            if (!user.isAdmin)
+              a(href='/admin') Admin
+            a(href='/logout') Log out          
+
+    block content
+
+

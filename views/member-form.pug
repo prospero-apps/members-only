@@ -1,0 +1,19 @@
+extends layout 
+
+block content 
+
+  h1= title 
+  .content
+    form(method='POST' action='/member')        
+      label(for='member-code') Enter the member code below: 
+      input#memberCode(type='password' name='memberCode' required='true')
+ 
+      button(type='submit') Submit Member Code
+
+    if (codeError)
+      p.errors= codeError
+
+    if errors 
+      ul.errors 
+        for error in errors 
+          li!= error.msg

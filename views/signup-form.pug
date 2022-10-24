@@ -1,0 +1,27 @@
+extends layout 
+
+block content 
+
+  h1= title 
+  .content
+    form(method='POST' action='')
+      p 
+        span Already registered? 
+        span     
+          a(href='/login') Log in
+
+      label(for='username') Username 
+      input#username(type='text' name='username' required='true' value=(undefined===user ? '' : user.username))
+
+      label(for='password') Password 
+      input#password(type='password' name='password' required='true')
+
+      label(for='confirm') Confirm Password 
+      input#confirm(type='password' name='confirm' required='true')
+
+      button(type='submit') Sign Up
+
+    if errors 
+      ul.errors 
+        for error in errors 
+          li!= error.msg

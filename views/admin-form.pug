@@ -1,0 +1,19 @@
+extends layout 
+
+block content 
+
+  h1= title 
+  .content
+    form(method='POST' action='/admin')        
+      label(for='admin-code') Enter the admin code below: 
+      input#adminCode(type='password' name='adminCode' required='true')
+ 
+      button(type='submit') Submit Admin Code
+
+    if (codeError)
+      p.errors= codeError
+
+    if errors 
+      ul.errors 
+        for error in errors 
+          li!= error.msg

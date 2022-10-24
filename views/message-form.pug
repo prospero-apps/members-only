@@ -1,0 +1,20 @@
+extends layout 
+
+block content 
+
+  h1= title 
+  .content
+    form(method='POST' action='/create-message')
+      
+      label(for='messageTitle') Title (max. 80 characters)
+      input#messageTitle(type='text' name='messageTitle' required='true' maxLength='80')
+
+      label(for='messageContent') Content (max. 500 characters)
+      textarea#messageContent(name='messageContent' rows='10' required='true' maxLength='500')
+      
+      button(type='submit') Submit Message
+
+    if errors 
+      ul.errors 
+        for error in errors 
+          li!= error.msg

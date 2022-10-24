@@ -1,0 +1,38 @@
+extends layout 
+
+block content  
+
+  .content
+    if messages
+      h1= title 
+
+      if (!user)
+        p.home Log in to create messages.
+
+      if (!user || !user.isMember) 
+        p.home Use the code 'c4KKp2m' to become a member. Only members can see the authors of the posts.
+
+      if (!user || !user.isAdmin)
+        p.home Shouldn't probably be telling you this, but use the code 's64aar' to become an admin. Admins can delete messages.
+
+      ul.messageItems.home 
+        each message in messages 
+          li 
+            h2= message.title              
+            
+            .messageItemContent= message.content 
+            .messageInfo 
+              if (user && user.isMember)
+                p= message.user.username 
+              else 
+                p Anonymous               
+
+              p= message.date
+
+            if (user && user.isAdmin)
+                form.deleteForm(method='POST' action='')
+                  input#messageId(type='hidden' name='messageId' required='true' value=message._id)
+                  button.deleteButton(type='submit') Delete            
+
+        else 
+          li There are no messages.
