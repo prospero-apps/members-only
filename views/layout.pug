@@ -15,7 +15,7 @@ html(lang='en')
             a(href='/signup') Sign up
           else
             a(href='/create-message') Create Message
-            if (!user.isMember)
+            if (!user.isMember && !user.isAdmin)
               a(href='/member') Member
             if (!user.isAdmin)
               a(href='/admin') Admin
