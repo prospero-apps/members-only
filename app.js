@@ -10,11 +10,14 @@ const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const User = require('./models/user');
 const compression = require('compression');
+const helmet = require('helmet');
 
 // Import routes
 const indexRouter = require('./routes/index')
 
 const app = express();
+
+app.use(helmet());
 
 // Set up mongoose connection
 const mongoose = require("mongoose");

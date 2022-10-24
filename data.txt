@@ -1,0 +1,5 @@
+passwords:
+Danny - asdfghjkl
+Carmen - zxcvbnmlk - admin
+Marcus - poiuytrewq 
+Jake - qwertyuiop - member

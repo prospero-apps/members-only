@@ -22,7 +22,7 @@ block content
             
             .messageItemContent= message.content 
             .messageInfo 
-              if (user && user.isMember)
+              if (user && (user.isMember || user.isAdmin))
                 p= message.user.username 
               else 
                 p Anonymous               
