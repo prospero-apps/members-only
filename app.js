@@ -8,7 +8,8 @@ const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
-const User = require('./models/user')
+const User = require('./models/user');
+const compression = require('compression');
 
 // Import routes
 const indexRouter = require('./routes/index')
@@ -21,6 +22,9 @@ const mongoDB = process.env.MONGODB_URI;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
+
+// Compress all routes
+app.use(compression());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
